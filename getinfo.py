@@ -1,7 +1,7 @@
 import json
 from os import environ
 
-from controllers import WSManClient, PowerController, BootController
+from controllers import WSManClient, PowerController, BootController, KVMController
 
 if __name__ == "__main__":
     host = environ.get("AMT_HOST")
@@ -15,6 +15,7 @@ if __name__ == "__main__":
     client = WSManClient(host, port, user, password)
     powerctl = PowerController(client)
     bootctl = BootController(client)
+    kvmctl = KVMController(client)
     
     print("==== POWER CHANGE CAPABILITIES")
     print(json.dumps(powerctl.get_power_change_capabilities(), sort_keys=True, indent=4))
@@ -24,3 +25,6 @@ if __name__ == "__main__":
 
     print("\n==== BOOT CAPABILITIES")
     print(json.dumps(bootctl.get_boot_capabilities(), sort_keys=True, indent=4))
+
+    print("\n==== KVM STATE")
+    print(kvmctl.get_kvm_state())
