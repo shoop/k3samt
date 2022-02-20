@@ -4,7 +4,9 @@ from os import environ
 from controllers import WSManClient, PowerController, BootController
 
 if __name__ == "__main__":
-    host = "node1amt.svc.kzp.home.arpa"
+    host = environ.get("AMT_HOST")
+    if host is None:
+        raise ValueError("Need AMT host in environ AMT_HOST")
     port = 623
     user = "admin"
     password = environ.get("AMT_PASSWORD")
