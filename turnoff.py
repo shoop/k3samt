@@ -14,13 +14,13 @@ if __name__ == "__main__":
         raise ValueError("Need AMT password in environ AMT_PASSWORD")
     client = WSManClient(host, port, user, password)
     powerctl = PowerController(client)
-    
+
     current_state = powerctl.get_power_state()
 
     if "Power Off - Soft Graceful" in current_state['AvailablePowerStates']:
-        print(powerctl.set_power_state("Power Off - Soft"))
-    elif "Power Off - Soft" in current_state['AvailablePowerStates']:
         print(powerctl.set_power_state("Power Off - Soft Graceful"))
+    elif "Power Off - Soft" in current_state['AvailablePowerStates']:
+        print(powerctl.set_power_state("Power Off - Soft"))
     else:
         print(f"=== FAIL: no 'Power Off - Soft' state is not available currently, available: {','.join(current_state['AvailablePowerStates'])}")
         sys.exit(1)
