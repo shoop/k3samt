@@ -15,7 +15,7 @@ if __name__ == "__main__":
     client = WSManClient(host, port, user, password)
     powerctl = PowerController(client)
     bootctl = BootController(client)
-    
+
     # Follow the steps here in order, or AMT will not do the right thing:
     # https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fsetsolstorageredirectionandotherbootoptions.htm
     print("==== Clearing Boot Configuration")

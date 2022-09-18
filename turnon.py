@@ -14,7 +14,7 @@ if __name__ == "__main__":
         raise ValueError("Need AMT password in environ AMT_PASSWORD")
     client = WSManClient(host, port, user, password)
     powerctl = PowerController(client)
-    
+
     current_state = powerctl.get_power_state()
     if "On" not in current_state['AvailablePowerStates']:
         print(f"=== FAIL: the 'On' state is not available currently, available: {','.join(current_state['AvailablePowerStates'])}")

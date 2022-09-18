@@ -16,7 +16,7 @@ if __name__ == "__main__":
     powerctl = PowerController(client)
     bootctl = BootController(client)
     kvmctl = KVMController(client)
-    
+
     print("==== POWER CHANGE CAPABILITIES")
     print(json.dumps(powerctl.get_power_change_capabilities(), sort_keys=True, indent=4))
 
