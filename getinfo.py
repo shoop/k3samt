@@ -26,5 +26,8 @@ if __name__ == "__main__":
     print("\n==== BOOT CAPABILITIES")
     print(json.dumps(bootctl.get_boot_capabilities(), sort_keys=True, indent=4))
 
+    print("\n==== BOOT PARAMS")
+    print(json.dumps(bootctl.get_bootparams(), sort_keys=True, indent=4))
+
     print("\n==== KVM STATE")
     print(kvmctl.get_kvm_state())
